@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Relatório do Item</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#fff; --ink:#111; --muted:#666; --line:#e5e7eb; --accent:#0ea5e9;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:24px; font-family: Arial, Helvetica, sans-serif; color:var(--ink);
+      background:var(--bg); line-height:1.45;
+    }
+    h1{ font-size:20px; margin:0 0 4px 0; }
+    .subtitle{ color:var(--muted); font-size:12px; margin:0 0 16px 0; }
+    table{
+      width:100%; border-collapse:collapse; font-size:13px; table-layout:fixed;
+    }
+    th, td{
+      border:1px solid var(--line); padding:8px 10px; vertical-align:top; word-wrap:anywhere;
+    }
+    th{
+      width:38%; background:#f8fafc; text-align:left; font-weight:600;
+    }
+    .badge{
+      display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid var(--line);
+      font-size:11px; color:var(--muted);
+    }
+    .footer{
+      margin-top:18px; font-size:11px; color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <h1>Relatório do Item</h1>
+  <p class="subtitle">
+    Gerado em {{ $now }} · <span class="badge">Fonte: $json</span>
+  </p>
+
+  <table aria-label="Dados do Item">
+    {{ (()=>{
+      // Lista fixa dos campos que você quer exibir, na ordem desejada:
+      const campos = [
+        "numeroItem",
+        "descricao",
+        "materialOuServico",
+        "materialOuServicoNome",
+        "valorUnitarioEstimado",
+        "valorTotal",
+        "quantidade",
+        "unidadeMedida",
+        "orcamentoSigiloso",
+        "itemCategoriaId",
+        "itemCategoriaNome",
+        "patrimonio",
+        "codigoRegistroImobiliario",
+        "criterioJulgamentoId",
+        "criterioJulgamentoNome",
+        "situacaoCompraItem",
+        "situacaoCompraItemNome",
+        "tipoBeneficio",
+        "tipoBeneficioNome",
+        "incentivoProdutivoBasico",
+        "dataInclusao",
+        "dataAtualizacao",
+        "temResultado",
+        "aplicabilidadeMargemPreferenciaNormal",
+        "aplicabilidadeMargemPreferenciaAdicional",
+        "percentualMargemPreferenciaNormal",
+        "percentualMargemPreferenciaAdicional",
+        "ncmNbsCodigo",
+        "ncmNbsDescricao",
+        "catalogo",
+        "categoriaItemCatalogo",
+        "catalogoCodigoItem",
+        "informacaoComplementar",
+        "tipoMargemPreferencia",
+        "exigenciaConteudoNacional"
+      ];
+
+      // Função que pega o valor e normaliza para string, deixando vazio se faltar:
+      const get = (k) => {
+        const v = $json[k];
+        if (v === null || v === undefined) return "";
+        if (typeof v === "boolean") return v ? "Sim" : "Não"; // <-- ajuste para booleanos
+        return String(v);
+      };
+
+      return campos.map((k) => `
+        <tr>
+          <th>${k}</th>
+          <td>${get(k)}</td>
+        </tr>
+      `).join("");
+    })() }}
+  </table>
+
+  <p class="footer">Observação: campos ausentes são exibidos vazios propositalmente.</p>
+</body>
+</html>

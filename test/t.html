@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Tabela Relatório</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 20px;
+      background: #f8f9fa;
+      color: #212529;
+    }
+
+    h1{ font-size: 20px; margin-bottom: 12px; }
+
+    .table-container{
+      overflow-x: auto;
+      border: 1px solid #dee2e6;
+      border-radius: .5rem;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 800px;
+    }
+
+    thead{
+      background: #f1f3f5;
+    }
+
+    th, td{
+      padding: 8px 12px;
+      border: 1px solid #dee2e6;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th{
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(even){
+      background: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Relatório do Item</h1>
+
+  <!-- Tabela 1 -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>numeroItem</th>
+          <th>descricao</th>
+          <th>materialOuServico</th>
+          <th>materialOuServicoNome</th>
+          <th>valorUnitarioEstimado</th>
+          <th>valorTotal</th>
+          <th>quantidade</th>
+          <th>unidadeMedida</th>
+          <th>orcamentoSigiloso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $json.numeroItem }}</td>
+          <td>{{ $json.descricao }}</td>
+          <td>{{ $json.materialOuServico }}</td>
+          <td>{{ $json.materialOuServicoNome }}</td>
+          <td>{{ $json.valorUnitarioEstimado }}</td>
+          <td>{{ $json.valorTotal }}</td>
+          <td>{{ $json.quantidade }}</td>
+          <td>{{ $json.unidadeMedida }}</td>
+          <td>{{ $json.orcamentoSigiloso }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tabela 2 -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>itemCategoriaId</th>
+          <th>itemCategoriaNome</th>
+          <th>patrimonio</th>
+          <th>codigoRegistroImobiliario</th>
+          <th>criterioJulgamentoId</th>
+          <th>criterioJulgamentoNome</th>
+          <th>situacaoCompraItem</th>
+          <th>situacaoCompraItemNome</th>
+          <th>tipoBeneficio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $json.itemCategoriaId }}</td>
+          <td>{{ $json.itemCategoriaNome }}</td>
+          <td>{{ $json.patrimonio }}</td>
+          <td>{{ $json.codigoRegistroImobiliario }}</td>
+          <td>{{ $json.criterioJulgamentoId }}</td>
+          <td>{{ $json.criterioJulgamentoNome }}</td>
+          <td>{{ $json.situacaoCompraItem }}</td>
+          <td>{{ $json.situacaoCompraItemNome }}</td>
+          <td>{{ $json.tipoBeneficio }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tabela 3 -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>tipoBeneficioNome</th>
+          <th>incentivoProdutivoBasico</th>
+          <th>dataInclusao</th>
+          <th>dataAtualizacao</th>
+          <th>temResultado</th>
+          <th>aplicabilidadeMargemPreferenciaNormal</th>
+          <th>aplicabilidadeMargemPreferenciaAdicional</th>
+          <th>percentualMargemPreferenciaNormal</th>
+          <th>percentualMargemPreferenciaAdicional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        {{ (()=>{const campos = [
+            
+          <td>{{ $json.tipoBeneficioNome }}</td>
+          <td>{{ $json.incentivoProdutivoBasico }}</td>
+          <td>{{ $json.dataInclusao }}</td>
+          <td>{{ $json.dataAtualizacao }}</td>
+          <td>{{ $json.temResultado }}</td>
+          <td>{{ $json.aplicabilidadeMargemPreferenciaNormal }}</td>
+          <td>{{ $json.aplicabilidadeMargemPreferenciaAdicional }}</td>
+          <td>{{ $json.percentualMargemPreferenciaNormal }}</td>
+          <td>{{ $json.percentualMargemPreferenciaAdicional }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tabela 4 -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ncmNbsCodigo</th>
+          <th>ncmNbsDescricao</th>
+          <th>catalogo</th>
+          <th>categoriaItemCatalogo</th>
+          <th>catalogoCodigoItem</th>
+          <th>informacaoComplementar</th>
+          <th>tipoMargemPreferencia</th>
+          <th>exigenciaConteudoNacional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $json.ncmNbsCodigo }}</td>
+          <td>{{ $json.ncmNbsDescricao }}</td>
+          <td>{{ $json.catalogo }}</td>
+          <td>{{ $json.categoriaItemCatalogo }}</td>
+          <td>{{ $json.catalogoCodigoItem }}</td>
+          <td>{{ $json.informacaoComplementar }}</td>
+          <td>{{ $json.tipoMargemPreferencia }}</td>
+          <td>{{ $json.exigenciaConteudoNacional }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
